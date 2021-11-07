@@ -9,5 +9,4 @@
     @include('include.offers-slider')
     @include('include.blog')
     @include('include.testimonial')
-
 @endsection

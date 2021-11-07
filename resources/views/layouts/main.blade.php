@@ -12,7 +12,7 @@
 	@if (Request::path() =='home' || Request::path()== '/')
 		@include('include.header')
 	@else
-		@include('include.header-withoutslider')	
+		@include('include.header-withoutslider')
 	@endif
 	<!-- yeild contents here -->
 	@yield('content')
@@ -23,6 +23,6 @@
 	@include('include.footer')
 
 	<!-- initiate scripts-->
-	@include('include.scripts')	
+	@include('include.scripts')
 </body>
 </html>

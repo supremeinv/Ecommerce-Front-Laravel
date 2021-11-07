@@ -1,10 +1,9 @@
 
-
 <header>
 
     <nav>
-    
-    <div class="header-menu-area hone-one-header-menu-area d-md-none d-none d-lg-block">
+
+    <div class="header-menu-area d-md-none d-none d-lg-block">
     <div class="container-fluid">
     <div class="row">
     <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5">
@@ -15,7 +14,7 @@
     </a>
     <nav class="main-nav">
     <div class="logo mobile-ham-logo d-lg-none d-block text-left">
-    <a href="index-2.html"><img src={{ asset("/images/logo.png") }} alt=""></a>
+    <a href="index-2.html"><img src="assets/images/logo.png" alt=""></a>
     </div>
     <div class="menu-category-icon">
     <a href="#"><i class='bx bx-slider-alt'></i></a>
@@ -73,14 +72,14 @@
     </div>
     </div>
     </div>
-    
-    
-    <div class="header-menu-area hone-one-header-menu-area d-lg-none d-block d-md-block">
+
+
+    <div class="header-menu-area d-lg-none d-block d-md-block">
     <div class="container-fluid">
     <div class="row">
     <div class="col-xl-2 col-lg-2 col-sm-3 col-3">
     <div class="logo text-center">
-    <a href="index-2.html"><img src={{ asset("/images/logo.png") }}  alt=""></a>
+    <a href="index-2.html"><img src="assets/images/logo.png" alt=""></a>
     </div>
     </div>
     <div class="col-xl-5 col-lg-5 col-md-7 col-sm-7 col-7">
@@ -102,7 +101,7 @@
     </a>
     <nav class="main-nav">
     <div class="logo mobile-ham-logo d-lg-none d-block text-left">
-    <a href="index-2.html"><img src={{ asset("/images/logo.png") }}  alt=""></a>
+    <a href="index-2.html"><img src="assets/images/logo.png" alt=""></a>
     </div>
     <div class="menu-category-icon d-xl-block d-lg-none d-md-none d-none">
     <a href="#"><i class='bx bx-slider-alt'></i></a>
@@ -146,10 +145,10 @@
     </div>
     </div>
     </div>
-    
+
     </nav>
-    
-    
+
+
     <div class="search-bar-wrap ">
     <span class="search-close"><i class='bx bx-x'></i></span>
     <div class="search-bar-content text-center">
@@ -163,5 +162,21 @@
     </div>
     </div>
     </div>
-    
+
+    <div class="breadcrumb-area">
+    <div class="container">
+    <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="breadcrumb-content text-center">
+    <h3>Shop2</h3>
+    <div class="breadcrumb-link">
+    <p><a href="index-2.html">Home</a></p>
+    <span></span>
+    <p>Shop2</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </header>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
+//home page routes
+Route::get('home', [HomeController::class, 'index']);
 
-Route::get('home', [HomeController::class,'index']);
-
+//shop pages routes
+Route::get('shop', [ShopController::class, 'index']);
+Route::get('product/{id}', [ShopController::class, 'details'])->name('product');
+Route::get('checkout',[ShopController::class,'checkout']);
