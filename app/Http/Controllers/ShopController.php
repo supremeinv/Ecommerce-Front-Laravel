@@ -3,22 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Home;
+use App\Models\Products;
 class ShopController extends Controller
 {
 
 
     public function index()
     {
-        return view('product.shop');
+        // prepare data
+        $data = array(
+            'logo' => Home::getlogodetails(),
+        );
+        return view('product.shop')->with($data);
     }
 
 
-    public function details(){
-        return view('product.shop-details');
+    public function details($id=NULL){
+        $data = array(
+            'logo' => Home::getlogodetails(),
+            'product' => Products::singleProduct($id)->first()
+        );
+        if(empty($data['product']))
+            return redirect('shop');
+        return view('product.shop-details')->with($data);
     }
 
-    public function checkout(){
-        return view('product.checkout');
-    }
 }
