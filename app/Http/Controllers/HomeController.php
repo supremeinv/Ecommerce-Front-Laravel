@@ -11,7 +11,21 @@ use App\Models\Reviews;
 
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
         // prepare data
@@ -26,10 +40,13 @@ class HomeController extends Controller
         return view('home')->with($data);
     }
 
+    // public function login(){
+    //     return view('auth/login');
+    // }
+
     public function clearCache()
     {
         \Artisan::call('cache:clear');
         return view('clear-cache');
     }
-
 }

@@ -24,3 +24,8 @@ Route::get('home', [HomeController::class, 'index']);
 Route::get('shop', [ShopController::class, 'index']);
 Route::get('product/{id}', [ShopController::class, 'details'])->name('product');
 Route::get('checkout',[ShopController::class,'checkout']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('login',[HomeController::class,'login'])->name('login');
