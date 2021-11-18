@@ -28,6 +28,9 @@ class Customers extends Model
             'cus_pwd'
         ];
 
+        public function getEmailAttribute() {
+            return $this->cus_email;
+        }
 
         /**
          * Get the password for the user.

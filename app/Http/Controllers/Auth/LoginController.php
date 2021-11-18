@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\Home;
 
 class LoginController extends Controller
 {
@@ -43,7 +44,7 @@ class LoginController extends Controller
      *
      * @return string
      */
-    public function email()
+    public function username()
     {
         return 'cus_email';
     }
@@ -56,5 +57,11 @@ class LoginController extends Controller
     public function getAuthPassword()
     {
         return $this->cus_pwd;
+    }
+
+    public function showLoginForm()
+    {
+        $data['logo'] = Home::getlogodetails();
+        return view("auth.login", $data);
     }
 }

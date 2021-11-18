@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use App\Models\Customers;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Country;
+use App\Models\Home;
+
 
 class RegisterController extends Controller
 {
@@ -41,6 +44,13 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $data['logo'] = Home::getlogodetails();
+        $data['countries'] = Country::get(["co_name", "co_id","co_code"]);
+        return view("auth.register", $data);
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -50,24 +60,42 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'cus_name' => ['required', 'string', 'max:255'],
+            'cus_email' => ['required', 'string', 'email', 'max:255', 'unique:nm_customer'],
+            'cus_pwd' => ['required', 'string', 'min:8', 'confirmed'],
+            'cus_country' => ["required"],
+            'cus_state' => ["required"],
+            'cus_city' => ["required"],
+            'cus_phone' => ["required","numeric","digits:10"],
+            'terms' => ["accepted"]
+
+        ],[
+            'cus_name.required'  => "Customer Name is Required",
+            'cus_email.required'  => "Customer Email is Required",
+            'cus_pwd.required'  => "Customer Password is Required",
+            'cus_pwd.confirmed'  => "Confirm Password Must Match",
+            "cus_country.required" => "Country Name is Required",
+            'cus_state.required'  => "State Name is Required",
+            'cus_city.required'  => "City Name is Required",
+            'cus_phone.required'  => "Customer Phone is Required",
+            'cus_phone.numeric'  => "Customer Phone must be numeric",
+            'cus_phone.digits'  => "Customer Phone must be 10 digits",
+            'terms.accepted' => "Terms & Conditions Must be Accepted"
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new Customers instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\Models\Customers
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        return Customers::create([
+            'cus_name' => $data['cus_name'],
+            'cus_email' => $data['cus_email'],
+            'cus_pwd' => Hash::make($data['cus_pwd']),
         ]);
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\DropdownController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,13 @@ Route::get('shop', [ShopController::class, 'index']);
 Route::get('product/{id}', [ShopController::class, 'details'])->name('product');
 Route::get('checkout',[ShopController::class,'checkout']);
 
+//auth routes
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('login',[HomeController::class,'login'])->name('login');
+
+//dropdown routes
+Route::get('api/fetch-states', [DropdownController::class, 'fetchCountry']);
+Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
+Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
