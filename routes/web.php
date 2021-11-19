@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +29,18 @@ Route::get('checkout',[ShopController::class,'checkout']);
 
 //auth routes
 Auth::routes();
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('login',[HomeController::class,'login'])->name('login');
 
 //dropdown routes
 Route::get('api/fetch-states', [DropdownController::class, 'fetchCountry']);
 Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
 Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
+
+//account routes
+Route::get('account',[AccountController::class,'index'])->middleware('auth');
+Route::get('/dashboard',function(){
+    dd(auth()->user());
+//    return view('welcome');
+})->middleware('auth');

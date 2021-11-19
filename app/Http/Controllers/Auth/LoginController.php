@@ -64,4 +64,5 @@ class LoginController extends Controller
         $data['logo'] = Home::getlogodetails();
         return view("auth.login", $data);
     }
+
 }

@@ -2,45 +2,45 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customers extends Model
+class Customers extends Authenticatable
 {
     use HasFactory;
-    protected $guarded = array('cus_id');
     protected $table = 'nm_customer';
-            /**
-         * The attributes that are mass assignable.
-         *
-         * @var array
-         */
-        protected $fillable = [
-            'cus_name', 'cus_email', 'cus_pwd',
-        ];
+    protected $primaryKey = 'cus_id';
 
-        /**
-         * The attributes that should be hidden for arrays.
-         *
-         * @var array
-         */
-        protected $hidden = [
-            'cus_pwd'
-        ];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
 
-        public function getEmailAttribute() {
-            return $this->cus_email;
-        }
+    /**\
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'cus_pwd'
+    ];
 
-        /**
-         * Get the password for the user.
-         *
-         * @return string
-        */
+    public function getEmailAttribute()
+    {
+        return $this->cus_email;
+    }
 
-        public function getAuthPassword()
-        {
-            return $this->attributes['cus_pwd'];
-        }
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
 
+    public function getAuthPassword()
+    {
+        return $this->attributes['cus_pwd'];
+    }
 }

@@ -17,7 +17,7 @@
                    <h4>Login</h4>
                    <p>Welcome back! Sign in to your account </p>
                 </div>
-                <form id="contact-form" method="POST" action="{{route('login')}}" class="contat-input">
+                <form  method="POST" action="{{route('login')}}" class="contat-input">
                     @csrf
                    <div class="row">
                           <div class="col-xl-12 col-lg-12 col-sm-12 col-12 form_filed">
@@ -39,10 +39,10 @@
                              @enderror
                         </div>
                           <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12 form_filed">
-                             <label class="shop-check"><b>Dont have an account yet ? </b><a href="registers.html">Sign Up</a></label>
+                             <label class="shop-check"><b>Dont have an account yet ? </b><a href="{{url('register')}}">Sign Up</a></label>
                           </div>
                           <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 form_filed">
-                             <label class="shop-check"><a href="forget_password.html">Lost your password ?</a></label>
+                             <label class="shop-check"><a href="{{ route('password.request') }}">Lost your password ?</a></label>
                           </div>
                           <div class="details-page-reply-btn-wrap">
                          <button type="submit" class="common-btn shop-details-review-btn">Login</button>
