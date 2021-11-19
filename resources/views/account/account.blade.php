@@ -2,6 +2,13 @@
 @section('title', 'Account')
 @section('page','My Account')
 @section('content')
+
+{{-- {{dd(session()->all())}} --}}
+<style>
+    .invalid-feedback{
+        display:block !important;
+    }
+</style>
 <div class="login-area-wrap mt-100">
     <div class="container">
        <div class="row mt-50">
@@ -9,7 +16,8 @@
           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 both-small-50">
              <div class="sign-wrap">
 
-                <form id="contact-form-three" action="https://demo.egenslab.com/html/foxture/mail.php" method="POST" class="contat-input">
+                <form id="contact-form-three" enctype="multipart/form-data" action="{{route('store-account-info')}}"method="POST" class="contat-input">
+                    @csrf
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-sm-12 col-12 form_filed">
                            <label class="form-check-label form-check-label-first">Name*</label>
@@ -47,6 +55,15 @@
                            </span>
                            @enderror
                         </div>
+                        <div class="col-xl-12 col-lg-12 col-sm-12 col-12 form_filed">
+                            <label class="form-check-label">Image*</label>
+                            <input class="input-field" type="file"name="file" required placeholder="Choose Images">
+                            @error('file')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                         </div>
                         <div class="form-group mb-3">
                            <select  id="country-dd" name="cus_country" class="form-control">
                               <option value="">Select Country</option>
@@ -64,6 +81,11 @@
                         </div>
                         <div class="form-group mb-3">
                            <select id="state-dd"  name="cus_state"  class="form-control">
+                            @foreach ($states as $data)
+                            <option value="{{$data->state_code}}" {{ trim($data->state_code) == $customer->cus_state  ? 'selected' : ''}}>
+                               {{$data->state_name}}
+                            </option>
+                            @endforeach
                            </select>
                            @error('cus_state')
                            <span class="invalid-feedback" role="alert">
@@ -73,6 +95,11 @@
                         </div>
                         <div class="form-group">
                            <select id="city-dd"  name="cus_city" class="form-control">
+                            @foreach ($cities as $data)
+                            <option value="{{$data->ci_id}}" {{ trim($data->ci_id) == $customer->cus_city  ? 'selected' : ''}}>
+                               {{$data->ci_name}}
+                            </option>
+                            @endforeach
                            </select>
                            @error('cus_city')
                            <span class="invalid-feedback" role="alert">
@@ -82,7 +109,7 @@
                         </div>
 
                         <div class="details-page-reply-btn-wrap form-group" style="margin-top:15px">
-                           <button type="submit" class="common-btn shop-details-review-btn">Register</button>
+                           <button type="submit" class="common-btn shop-details-review-btn">Update</button>
                            <button type="" class="common-btn shop-details-review-btn" style="float:right">Cancel</button>
                         </div>
                         <p class="form-message"></p>
@@ -123,6 +150,10 @@
                    </ul>
 
                 </div>
+                <figure class="figure">
+                    <img src="{{asset($customer->cus_pic)}}" class="figure-img img-fluid rounded" alt="Profile Picture">
+                    <figcaption class="figure-caption text-right">Profile Picture</figcaption>
+                </figure>
 
              </div>
           </div>
@@ -150,7 +181,7 @@
                    $('#state-dd').html('<option value="">Select State</option>');
                    $.each(result.states, function (key, value) {
                        $("#state-dd").append('<option  on value="' + value
-                           .state_code + '">' + value.state_name + '</option>');
+                           .state_code + '" '+ value.state_code == {{$customer->cus_state}} ? "selected" : "" +'>' + value.state_name + '</option>');
                    });
                    $('#city-dd').html('<option value="">Select City</option>');
                }

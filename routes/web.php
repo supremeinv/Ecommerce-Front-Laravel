@@ -39,8 +39,7 @@ Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
 Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
 
 //account routes
-Route::get('account',[AccountController::class,'index'])->middleware('auth');
-Route::get('/dashboard',function(){
-    dd(auth()->user());
-//    return view('welcome');
-})->middleware('auth');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('account',[AccountController::class,'index']);
+    Route::post('/store', [AccountController::class,'store'])->name('store-account-info');
+});

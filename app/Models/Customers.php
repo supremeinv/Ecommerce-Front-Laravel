@@ -19,14 +19,14 @@ class Customers extends Authenticatable
      */
     protected $guarded = [];
 
-    /**\
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'cus_pwd'
-    ];
+    // /**\
+    //  * The attributes that should be hidden for arrays.
+    //  *
+    //  * @var array
+    //  */
+    // protected $hidden = [
+    //     'cus_pwd'
+    // ];
 
     public function getEmailAttribute()
     {
