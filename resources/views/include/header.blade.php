@@ -19,7 +19,8 @@
                       <ul>
                         <li><a href="{{url('/')}}">Home</a></li>
                         <li><a href="{{url("shop")}}">Shop</a></li>
-                        <li><a href="{{url("/")}}">Categories</a></li>
+                        <li><a href="{{url("/")}}">Categories</a>
+                        </li>
                         <li><a href="contact-us.html">Contact Us</a></li>
                       </ul>
                    </nav>
@@ -41,7 +42,7 @@
                          <li><span></span></li>
                          <li><a href="#"><i class='bx bx-search menu-search-click'></i></a></li>
                          <li><a href="#"><i class='bx bx-heart'><span>2</span></i></a></li>
-                         <li><a href="cart.html"><i class='bx bx-shopping-bag'><span>8</span></i></a></li>
+                         <li><a href="{{url('/cart')}}"><i class='bx bx-shopping-bag'><span>9</span></i></a></li>
                       </ul>
                    </div>
                 </div>
@@ -68,7 +69,7 @@
                          <li><span></span></li>
                          <li><a href="#"><i class='bx bx-search menu-search-click'></i></a></li>
                          <li><a href="#"><i class='bx bx-heart'><span>2</span></i></a></li>
-                         <li><a href="cart.html"><i class='bx bx-shopping-bag'><span>8</span></i></a></li>
+                         <li><a href="{{url('/cart')}}"><i class='bx bx-shopping-bag'><span>18</span></i></a></li>
                       </ul>
                    </div>
                 </div>

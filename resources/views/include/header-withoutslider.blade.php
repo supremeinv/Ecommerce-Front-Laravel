@@ -41,7 +41,13 @@
                          <li><span></span></li>
                          <li><a href="#"><i class='bx bx-search menu-search-click'></i></a></li>
                          <li><a href="#"><i class='bx bx-heart'><span>2</span></i></a></li>
-                         <li><a href="cart.html"><i class='bx bx-shopping-bag'><span>8</span></i></a></li>
+                         @php $totalQnty = 0 @endphp
+                       @if(session('cart'))
+                           @foreach(session('cart') as $id => $details)
+                               @php $totalQnty += 1 @endphp
+                               @endforeach
+                               @endif
+                         <li><a href="{{url('/cart')}}"><i class='bx bx-shopping-bag'><span>{{$totalQnty}}</span></i></a></li>
                       </ul>
                    </div>
                 </div>
@@ -68,7 +74,7 @@
                          <li><span></span></li>
                          <li><a href="#"><i class='bx bx-search menu-search-click'></i></a></li>
                          <li><a href="#"><i class='bx bx-heart'><span>2</span></i></a></li>
-                         <li><a href="cart.html"><i class='bx bx-shopping-bag'><span>8</span></i></a></li>
+                         <li><a href="{{url('/cart')}}"><i class='bx bx-shopping-bag'><span>10</span></i></a></li>
                       </ul>
                    </div>
                 </div>

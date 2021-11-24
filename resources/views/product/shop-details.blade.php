@@ -77,7 +77,7 @@
                      <input type="button" value="+" class="plus">
                   </div>
                   <div class="cart-button-wrap">
-                     <a class="cart-btn" href="#">Add To Cart</a>
+                     <a class="cart-btn" href="{{url("add-to-cart/".$product->pro_id)}}">Add To Cart</a>
                   </div>
                   <div class="cart-heart">
                      <a href="#"><i class='bx bx-heart'></i></a>

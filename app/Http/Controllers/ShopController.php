@@ -9,14 +9,20 @@ class ShopController extends Controller
 {
 
 
-    public function index()
+    public function index(Request $request)
     {
         // prepare data
         $data = array(
             'logo' => Home::getlogodetails(),
+            'products'=> Products::productWithReviews()->paginate(8),
+            'categories'=> \App\Models\Category::whereHas('products')->get(),
+            'colors'=> \App\Models\Color::whereHas('products')->get(),
+            'brands'=> \App\Models\Brand::whereHas('products')->get(),
         );
         return view('product.shop')->with($data);
     }
+
+
 
 
     public function details($id=NULL){
@@ -27,6 +33,19 @@ class ShopController extends Controller
         if(empty($data['product']))
             return redirect('shop');
         return view('product.shop-details')->with($data);
+    }
+
+    public function category(Request $request, $id)
+    {
+        // prepare data
+        $data = array(
+            'logo' => Home::getlogodetails(),
+            'products'=> Products::productWithReviews()->where('pro_mc_id','=',$id)->paginate(8),
+            'categories'=> \App\Models\Category::whereHas('products')->get(),
+            'colors'=> \App\Models\Color::whereHas('products')->get(),
+            'brands'=> \App\Models\Brand::whereHas('products')->get(),
+        );
+        return view('product.category')->with($data);
     }
 
 }

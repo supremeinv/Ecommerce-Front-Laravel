@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Shop Page')
+@section('title', 'Category Page')
 @section('content')
 <div class="shop-area mt-100">
    <div class="container">
@@ -20,7 +20,7 @@
                   </div>
                </div>
             </div>
-            <div class="shope-sidebar-wrap">
+            <!-- <div class="shope-sidebar-wrap">
                <div class="single-shop-sidebar">
                   <div class="shop-sidebar-title">
                      <h4>Price</h4>
@@ -32,7 +32,7 @@
                      </section>
                   </div>
                </div>
-            </div>
+            </div> -->
             <div class="shope-sidebar-wrap">
                <div class="single-shop-sidebar">
                   <div class="shop-sidebar-title">
@@ -75,7 +75,7 @@
                   </div>
                </div>
             </div>
-            <div class="shope-sidebar-wrap">
+            <!-- <div class="shope-sidebar-wrap">
                <div class="single-shop-sidebar">
                   <div class="shop-sidebar-title">
                      <h4>New Arrival</h4>
@@ -108,7 +108,7 @@
                      </div>
                   </div>
                </div>
-            </div>
+            </div> -->
          </div>
          <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
             <div class="shop-two-showing-wrap">
